@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Önéletrajz készítő</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Hind+Siliguri:wght@300;400;500;600;700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Molengo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body class="font-['Poppins']">
+    <div class="h-full w-full bg-slate-200">
+        <div class="w-full h-screen bg-[#2DC46A] flex flex-col items-center justify-center">
+            <div class="flex flex-col  w-[80%] items-center gap-10">
+                <p class="text-[40px] font-semibold text-white">Válaszon sablont és készítse el önéletrajzát 10 percen belül az önéletrajz készítővel</p>
+                <button class="bg-[#626CCC] text-[30px] p-8 rounded-2xl shadow-md text-white font-semibold">Készítse el önéletrajzát</button>
+            </div>
+        </div>
+
+        <div class="h-screen w-full flex flex-col items-center gap-20">
+           <div class="h-[20%] w-full flex items-center justify-center">
+                <p class="text-[70px] text-[#626CCC] font-bold uppercase">Sablonok</p>
+           </div> 
+            <div class=" flex gap-10 w-full h-[80%] items-center justify-center">
+                <div class="flex flex-col items-center gap-5">
+                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Fehér</p>
+                    <img src="assets/white.png" alt="" class="w-[230px] h-[300px]"> 
+                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+                </div>
+                <div class="flex flex-col items-center gap-5">
+                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Kék</p>
+                    <img src="assets/blue.png" alt="" class="w-[230px] h-[300px]"> 
+                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+                </div>
+                <div class="flex flex-col items-center gap-5">
+                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Zöld</p>
+                    <img src="assets/green.png" alt="" class="w-[230px] h-[300px]"> 
+                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+                </div>
+                <div class="flex flex-col items-center gap-5">
+                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Piros</p>
+                    <img src="assets/red.png" alt="" class="w-[230px] h-[300px]"> 
+                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+                </div>
+                <div class="flex flex-col items-center gap-5">
+                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Szürke</p>
+                    <img src="assets/gray.png" alt="" class="w-[230px] h-[300px]"> 
+                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+                </div>
+                <div class="flex flex-col items-center gap-5">
+                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Fekete</p>
+                    <img src="assets/black.png" alt="" class="w-[230px] h-[300px]"> 
+                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()">Kitöltés</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div >
+        <input type="text" name="" id="textinput" oninput="addText()">
+    </div>
+    <p id="text"></p>
+    
+    <script src="index.js"></script>
+</body>
+</html>
