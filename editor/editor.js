@@ -3,40 +3,70 @@ let experienceArray = [];
 let languagesArray = [];
 
 
-
 function renderCV() {
-    let firstName = document.getElementById("firstNameValue").value || "Teljes név" ;
-    let lastName = document.getElementById("lastNameValue").value;
-    let fullName = firstName + " " + lastName;
+    let firstNameValue = document.getElementById("firstNameValue").value;
+    let lastNameValue = document.getElementById("lastNameValue").value;
+    let fullName = firstNameValue + " " + lastNameValue;
     
-    let countryValue = document.getElementById("countryValue").value || "Ország";
-    let cityValue = document.getElementById("cityValue").value || "Város"
-    let emailValue = document.getElementById("emailValue").value || "Email";
-    let telephoneNumberValue = document.getElementById("telephoneNumberValue").value || "Telefonszám";
-    let jobValue = document.getElementById("jobValue").value || "Munka neve";
-
+    let countryValue = document.getElementById("countryValue").value;
+    let cityValue = document.getElementById("cityValue").value;
+    let emailValue = document.getElementById("emailValue").value;
+    let telephoneNumberValue = document.getElementById("telephoneNumberValue").value;
+    let jobValue = document.getElementById("jobValue").value;
+    
     document.getElementById("fullName").innerHTML = fullName;
+    document.getElementById("jobTitle").innerHTML = jobValue
+
     document.getElementById("countryName").innerHTML = countryValue 
     document.getElementById("cityName").innerHTML = cityValue
     document.getElementById("telephoneNumber").innerHTML = emailValue
     document.getElementById("emailAddress").innerHTML = telephoneNumberValue
-    document.getElementById("jobTitle").innerHTML = jobValue
+    
 
-
+    let personalInfoDiv = document.getElementById("personalInfo");
+    if (countryValue === "" && cityValue === "" && emailValue === "" && telephoneNumberValue === "") {
+        personalInfoDiv.style.display = "none";  // Ha minden mező üres, rejtse el
+    } else {
+        personalInfoDiv.style.display = "block";  // Ha van adat, mutassa
+    }
     //CHAT GPT Segített
     let imageInput = document.getElementById("imageInput");
+    let imagePreview = document.getElementById("IMG");
+    let removeIMGButton = document.getElementById("removeIMG")
+    
     if (imageInput.files && imageInput.files[0]) {
+        removeIMGButton.innerHTML = "";
+
+        // Gomb létrehozása és eseménykezelő hozzáadása
+        const button = document.createElement("button");
+        button.textContent = "✖";
+        button.addEventListener("click", deleteIMG);
+        removeIMGButton.appendChild(button);
+
         let reader = new FileReader();
-
         reader.onload = function (e) {
-            document.getElementById("IMG").src = e.target.result; // Beállítja a kép src attribútumát
+            imagePreview.src = e.target.result; // Beállítja a kép src attribútumát
+            imagePreview.style.display = "block"; 
         };
-
         reader.readAsDataURL(imageInput.files[0]); // Kép fájl olvasása
-    } else {
-        document.getElementById("IMG").src = "../assets/default.png"; // Üres képet állít be, ha nincs feltöltve kép
-    }
+
+        function deleteIMG(){
+            imageInput.value = "";
+            imagePreview.src = "";
+            imagePreview.style.display = "none"; 
+            removeIMGButton.innerHTML = "";
+        }  
+    } 
 }
+
+
+
+
+
+
+
+
+
 
 function addExperience() {
     let experienceName = document.getElementById("experienceName").value;
@@ -49,7 +79,7 @@ function addExperience() {
     experienceArray.push(experienceObject);
 
     document.getElementById("experienceName").value = "";
-    document.getElementById("experience").value = "";
+    document.getElementById("experienceLevel").value = "";
 
     renderExperience();
     renderEditExperience();
@@ -97,21 +127,15 @@ function renderExperience() {
     let experienceContainer = document.getElementById("experienceDiv");
     let experienceHTML = "";
 
-    experienceArray.forEach((experience) => {
-        experienceHTML += `<div>${experience.name} ${experience.level}</div>`;
-    });
+    if (experienceArray.length !== 0) {
+        experienceHTML += `<div><p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Készségek</p></div>`;
 
+        experienceArray.forEach((experience) => {
+            experienceHTML += `<div>${experience.name} ${experience.level}</div>`;
+        });
+    }
     experienceContainer.innerHTML = experienceHTML;
 }
-
-
-
-
-
-
-
-
-
 
 function addLinks(){
     let linkName = document.getElementById("linkName").value
@@ -171,10 +195,13 @@ function renderLinks() {
     let linksContainer = document.getElementById("links");
     let linksHTML = ""; 
 
-    linksArray.forEach((link) => {
-        linksHTML += `<div><a href="${link.url}" target="_blank">${link.name}</a></div>`; 
-    });
+    if (linksArray.length !== 0){
+        linksHTML += `<div><p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Linkek</p></div>`;
 
+        linksArray.forEach((link) => {
+            linksHTML += `<div><a href="${link.url}" target="_blank">${link.name}</a></div>`; 
+        });
+    }
     linksContainer.innerHTML = linksHTML; 
 }
 
@@ -245,9 +272,12 @@ function renderLanguage(){
     let languagesContainer = document.getElementById("languagesDIV");
     let languagesHTML = "";
 
-    languagesArray.forEach((language)=>{
-        languagesHTML += `<div>${language.name} ${language.level}</div>`
-    })
+    if (languagesArray.length !== 0){
+        languagesHTML += `<div><p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Nyelvek</p></div>`
 
+        languagesArray.forEach((language)=>{
+            languagesHTML += `<div>${language.name} ${language.level}</div>`
+        })
+    }
     languagesContainer.innerHTML = languagesHTML;
 }
