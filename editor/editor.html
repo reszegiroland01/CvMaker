@@ -54,7 +54,7 @@
 
     
 </head>
-<body class="font-['Open_Sans'] bg-gray-50" onload="renderCV()" onload="TextEditor()">
+<body class="font-['Open_Sans'] bg-gray-50" onload="renderCV()" >
     <div class="w-full h-full flex ">
         <div class="w-1/2 h-full  overflow-y-auto px-5 py-5">
             <div class="flex flex-col gap-5">
@@ -196,8 +196,9 @@
         </div> 
 
 
-        <div class="w-1/2 h-screen flex justify-center items-center ">
-            <div class="bg-white shadow-md px-[40px] py-[20px] w-[579px] min-h-[792px] fixed top-10 ">
+        <div id="PDFcontainer" class="w-[579px] min-h-[792px] flex justifyCenter items-center">
+            <div id="PDFcontainer" class="bg-white shadow-md px-[40px] py-[20px] w-[579px] min-h-[792px] fixed top-10 ">
+                
                 <div class="flex gap-10 mb-[25px]">
                     <img src="" alt="Image preview"  id="IMG" style="display: none;" class="h-[70px] w-[70px] rounded-md bg-none">
                     <div class="flex flex-col">
@@ -233,11 +234,19 @@
                     </div>
                 </div>
             </div>
+            
         </div>
         
     </div>
     
+    <button class="bg-green-300 rounded-xl p-2 m-5" id="btn">PDF Generálás</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
     <script src="textEditor.js"></script>
     <script src="editor.js"></script>
+    
 </body>
 </html>

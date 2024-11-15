@@ -1,3 +1,5 @@
+
+
 let linksArray = [];
 let experienceArray = [];
 let languagesArray = [];
@@ -171,7 +173,7 @@ function renderEditLinks(){
             let linksItem = document.createElement('div');
             linksItem.className = "links-item";
     
-            linksItem.innerHTML = `${link.name} ${link.level}`;
+            linksItem.innerHTML = `${link.name} ${link.url}`;
     
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "✖";
@@ -281,3 +283,28 @@ function renderLanguage(){
     }
     languagesContainer.innerHTML = languagesHTML;
 }
+
+
+let btnGen = document.getElementById("btn");
+
+btnGen.addEventListener("click", () => {
+    
+    
+    var element = document.getElementById('PDFcontainer');
+    var opt = {
+        margin: 0,
+        filename: 'CV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, scrollY: 0, windowWidth: document.body.scrollWidth, windowHeight: document.body.scrollHeight},
+        jsPDF: { unit: 'px', format: [579, 792], orientation: 'portrait', compress: true}
+    };
+
+    // PDF generálása és új fül megnyitása
+    html2pdf().set(opt).from(element).output('blob').then((pdfBlob) => {
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        window.open(pdfUrl, '_blank');
+    });
+});
+
+
+
