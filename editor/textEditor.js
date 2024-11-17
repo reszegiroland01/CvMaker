@@ -188,9 +188,9 @@ function TextEditor() {
 
     });
 }
-document.addEventListener("DOMContentLoaded", TextEditor);
-
-
+document.addEventListener("DOMContentLoaded", function() {
+    TextEditor();
+});
 
 
 

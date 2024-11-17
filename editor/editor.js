@@ -307,4 +307,3 @@ btnGen.addEventListener("click", () => {
 });
 
 
-
