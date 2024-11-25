@@ -1,75 +1,30 @@
-// let templates = [
-//     {
-//         id: 1,
-//         name: "Fehér",
-//         image: "/assets/white.png",
-        
-//     },
-//     {
-//         id: 2,
-//         name: "Kék",
-//         image: "/assets/blue.png",
-        
-//     },
-//     {
-//         id: 3,
-//         name: "Zöld",
-//         image: "/assets/green.png",
-        
-//     },
-//     {
-//         id: 4,
-//         name: "Piros",
-//         image: "/assets/red.png",
-        
-//     },
-//     {
-//         id: 5,
-//         name: "Szürke",
-//         image: "/assets/gray.png",
-        
-//     },
-//     {
-//         id: 6,
-//         name: "Fekete",
-//         image: "./assets/black.png",
-        
-//     }
-// ]
 
+document.getElementById('template1').addEventListener('click', function() {
+    localStorage.setItem('selectedTemplate', 'template1');
+    window.location.href = './editor/editor.html';  // Tovább navigálunk az editor oldalra
+  });
 
+  document.getElementById('template2').addEventListener('click', function() {
+    localStorage.setItem('selectedTemplate', 'template2');
+    window.location.href = './editor/editor.html';
+  });
 
-// function renderTemplates(){
-//     let templatesDiv = document.getElementById("templates")
-//     let templatesHTML = ``
-//     templates.forEach((template)=>{
-//         templatesHTML += 
-//         `<div> 
-//             <p>${template.name}</p>
+  document.getElementById('template3').addEventListener('click', function() {
+    localStorage.setItem('selectedTemplate', 'template3');
+    window.location.href = './editor/editor.html';
+  });
 
-//             <a href="#" onclick="selectTemplate(${template.id})">
-//                 <img src="${template.image}" alt="${template.name}" style="width:100px; height:auto;">
-//             </a>
-//         </div>`
-//     })
+  document.getElementById('template4').addEventListener('click', function() {
+    localStorage.setItem('selectedTemplate', 'template4');
+    window.location.href = './editor/editor.html';  // Tovább navigálunk az editor oldalra
+  });
 
-//     templatesDiv.innerHTML = templatesHTML;
-// }
-// renderTemplates()
+  document.getElementById('template5').addEventListener('click', function() {
+    localStorage.setItem('selectedTemplate', 'template5');
+    window.location.href = './editor/editor.html';
+  });
 
-// function selectTemplate(templateId){
-//     localStorage.setItem("selectedTemplateId", templateId);
-//     window.location.href = "./editor/editor.html";
-// }
-
-function navigate(){
-    window.location.href = "./editor/editor.html";
-}
-
-
-function addText() {
-    // Frissítsük a text változót a bemeneti mező aktuális értékével
-    let text = document.getElementById("textinput").value; 
-    // Frissítsük a p elemet az új szöveggel
-    document.getElementById("text").innerText = text; 
-}
+  document.getElementById('template6').addEventListener('click', function() {
+    localStorage.setItem('selectedTemplate', 'template6');
+    window.location.href = './editor/editor.html';
+  });

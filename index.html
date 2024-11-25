@@ -11,60 +11,172 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Hind+Siliguri:wght@300;400;500;600;700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Molengo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+    
 </head>
-<body class="font-['Poppins']">
-    <div class="h-full w-full bg-slate-200">
-        <div class="w-full h-screen bg-[#2DC46A] flex flex-col items-center justify-center">
-            <div class="flex flex-col  w-[80%] items-center gap-10">
-                <p class="text-[40px] font-semibold text-white">Válaszon sablont és készítse el önéletrajzát 10 percen belül az önéletrajz készítővel</p>
-                <button class="bg-[#626CCC] text-[30px] p-8 rounded-2xl shadow-md text-white font-semibold">Készítse el önéletrajzát</button>
+<body class="font-['Poppins'] ">
+    <div class="h-full w-full bg-gradient-to-r from-[#DCE1E1] to-[#B0FFFF]">
+        
+        
+
+        <div class="w-full h-screen  flex flex-col items-center gap-[5%]">
+            <div class="w-full h-[20%] flex items-center justify-between">
+                <div class=" flex-flex-col items-center ml-10 ">
+                    <img class="w-[200px] h-[140px] p-5" src="./assets/cv-logo.png" alt="">
+                </div>
+                <div class="flex gap-10 mr-20">
+                    <button class="text-[20px] font-bold text-white bg-[#154056] rounded-xl p-2">Kezdőlap</button>
+                    <button class="text-[20px] font-bold text-white bg-[#154056] rounded-xl p-2">Rólunk</button>
+                    <button class="text-[20px] font-bold text-white bg-[#154056] rounded-xl p-2">Sablonok</button>
+                </div>
+            </div>
+            <div class="flex flex-col w-[80%] items-center gap-20">
+                <p class="text-[40px] font-semibold text-[#001131]">Készítsd el profi önéletrajzodat percek alatt.</p>
+                <div class="flex w-full h-full shadow-md rounded-2xl items-center justify-center">
+                    <div class="flex flex-col  w-[25%] h-[100%]">
+                        <p class="text-[#001131] text-bold text-[22px] h-[25%]">- Gyors elkészítés</p>
+                        <p class="text-[#001131] text-bold text-[22px] h-[25%]">- Modern dizájnok</p>
+                        <p class="text-[#001131] text-bold text-[22px] h-[25%]">- Személyre szabható</p>
+                        <p class="text-[#001131] text-bold text-[22px] h-[25%]">- Teljesen ingyen</p>
+                    </div>
+                    <div class="flex w-[30%] h-[100%]  justify-center relative ">
+                        <img class="h-[300px] w-[200px] shadow-xl transition-all duration-300 transform hover:scale-110 hover:bg-gray-500 hover:opacity-75" src="./assets/green.png" alt="Green">
+                   
+                        <img class="h-[300px] w-[200px] shadow-xl transition-all duration-300 transform hover:scale-110 hover:bg-gray-500 hover:opacity-75 absolute transform rotate-12 left-2/4" src="./assets/gray.png" alt="Gray">
+                    </div>
+                </div>
+                
+                <button class="bg-[#154056] text-[30px] p-8 rounded-2xl shadow-md text-white font-semibold">Kezd el most</button>
             </div>
         </div>
 
-        <div class="h-screen w-full flex flex-col items-center gap-20">
-           <div class="h-[20%] w-full flex items-center justify-center">
-                <p class="text-[70px] text-[#626CCC] font-bold uppercase">Sablonok</p>
+        <div class="h-screen w-full flex flex-col items-center  ">
+            <div class="h-[20%] w-full flex items-center justify-center">
+                <p class="text-[70px] text-[#001131] font-bold uppercase">Rólunk</p>
            </div> 
-            <div class=" flex gap-10 w-full h-[80%] items-center justify-center">
-                <div class="flex flex-col items-center gap-5">
-                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Fehér</p>
-                    <img src="assets/white.png" alt="" class="w-[230px] h-[300px]"> 
-                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+           <div class="flex h-[80%] w-full ">
+                <div class="flex flex-col h-full w-[40%] ml-[10%]  p-10 gap-10">
+                    <div class="flex flex-col gap-10">
+                        <p class="text-[30px] font-bold text-[#001131]">Rólunk</p>
+                        <ol>
+                            <li class="text-[18px] font-semibold text-[#001131] ml-5">Mi hisszük, hogy mindenki megérdemel egy esélyt arra, hogy kitűnjön és megmutassa a legjobbat magából. Ezért hoztuk létre ezt az önéletrajz-készítő oldalt, hogy a CV-írás soha többé ne legyen akadály!</li>
+                        </ol>
+                        <p ></p>
+                    </div>
+
+                    <div class="flex flex-col gap-10">
+                        <p class="text-[30px] font-bold text-[#001131]">Küldetésünk</p>
+                        <ol>
+                            <li class="text-[18px] font-semibold text-[#001131] mb-5 ml-5">Segítünk az embereknek a lehető legjobb első benyomást tenni a munkaerőpiacon, könnyedén és stresszmentesen.</li>
+                            <li class="text-[18px] font-semibold text-[#001131] ml-5">Csapatunk elkötelezett amellett, hogy a legkorszerűbb eszközöket és inspirációt nyújtsa, így biztos lehetsz benne, hogy az önéletrajzod mindig naprakész és lenyűgöző lesz.</li>
+                        </ol>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center gap-5">
-                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Kék</p>
-                    <img src="assets/blue.png" alt="" class="w-[230px] h-[300px]"> 
-                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+
+                <div class="flex flex-col h-full w-[40%] mr-[10%] p-10 gap-10 items-center">
+                    <p class="text-[30px] font-bold text-[#001131]">Miért minket válassz?</p>
+
+                    <div class="grid grid-cols-2 gap-10 w-[80%] h-[80%]">
+                        <div class="p-5 rounded-lg shadow-lg">
+                            <div class="h-[50%] flex items-center justify-center"><img src="./assets/rabbit.png" class="h-[75%]" alt=""></div>
+                            <p class="text-[18px] font-bold text-[#001131] text-center">Gyorsan elkészítheted önéletrajzod.</p>
+                        </div>
+                        <div class="p-5 rounded-lg shadow-lg">
+                            <div class="h-[50%] flex items-center justify-center"><img src="./assets/different.png" class="h-[75%]" alt=""></div>
+                            <p class="text-[18px] font-bold text-[#001131] text-center">Modern dizájnok küzöl választhatsz.</p>
+                        </div>
+                        <div class="p-5 rounded-lg shadow-lg">
+                            <div class="h-[50%] flex items-center justify-center"><img src="./assets/edit.png" class="h-[75%]" alt=""></div>
+                            <p class="text-[18px] font-bold text-[#001131] text-center">Szabadon szerkesztheted az önéletrajzod.</p>
+                        </div>
+                        <div class="p-5 rounded-lg shadow-lg">
+                            <div class="h-[50%] flex items-center justify-center"><img src="./assets/free.png" class="h-[75%]" alt=""></div>
+                            <p class="text-[18px] font-bold text-[#001131] text-center">Mindezt teljesen ingyen.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center gap-5">
-                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Zöld</p>
-                    <img src="assets/green.png" alt="" class="w-[230px] h-[300px]"> 
-                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+           </div>
+        </div>
+
+        <div class="h-full w-full flex flex-col items-center">
+           <div class="h-[20%] w-full mb-10 flex items-center justify-center">
+                <p class="text-[70px] text-[#001131] font-bold uppercase">Sablonok</p>
+           </div> 
+            <div class=" flex flex-col gap-5 mb-10 w-full items-center justify-center ">
+                <div class="flex gap-10 items-center justify-center w-full h-4/5">
+                    <div class="flex flex-col  h-[80%] w-[30%] bg-gradient-to-r from-[#B0FFFF] to-[#DCE1E1] rounded-xl items-center gap-2 shadow-xl relative transition-all duration-300 transform hover:scale-110 hover:opacity-100 group">
+                        <div class="h-[80%] w-[80%] mt-10 flex flex-col gap-2 ">
+                            <img src="assets/white.png" alt="" class="w-full h-full">
+                            <button id="template1" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20px] uppercase text-white bg-[#154056] p-1.5 rounded-xl font-bold opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
+                                Kitöltés
+                            </button>
+                            <p class="text-[20px] text-[#154056] mb-5 font-bold">Stockholm</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col  h-[80%] w-[30%] bg-gradient-to-r from-[#B0FFFF] to-[#DCE1E1] rounded-xl items-center gap-2 shadow-xl relative transition-all duration-300 transform hover:scale-110  hover:opacity-100 group">
+                        <div class="h-[80%] w-[80%] mt-10 flex flex-col gap-2 ">
+                            <img src="assets/blue.png" alt="" class="w-full h-full">
+                            <button id="template2" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20px] uppercase text-white bg-[#154056] p-1.5 rounded-xl font-bold opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
+                                Kitöltés
+                            </button>
+                            <p class="text-[20px] text-[#154056] mb-5 font-bold">Sydney</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col  h-[80%] w-[30%] bg-gradient-to-r from-[#B0FFFF] to-[#DCE1E1] rounded-xl items-center gap-2 shadow-xl relative transition-all duration-300 transform hover:scale-110 hover:opacity-100 group">
+                        <div class="h-[80%] w-[80%] mt-10 flex flex-col gap-2 ">
+                            <img src="assets/green.png" alt="" class="w-full h-full">
+                            <button id="template3" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20px] uppercase text-white bg-[#154056] p-1.5 rounded-xl font-bold opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
+                                Kitöltés
+                            </button>
+                            <p class="text-[20px] text-[#154056] mb-5 font-bold">Dublin</p>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="flex flex-col items-center gap-5">
-                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Piros</p>
-                    <img src="assets/red.png" alt="" class="w-[230px] h-[300px]"> 
-                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
+
+                <div class="flex gap-10 mt-20 items-center justify-center w-full h-4/5">
+                    <div class="flex flex-col h-[80%] w-[30%] bg-gradient-to-r from-[#B0FFFF] to-[#DCE1E1] rounded-xl items-center gap-2 shadow-xl relative transition-all duration-300 transform hover:scale-110  hover:opacity-100 group">
+                        <div class="h-[80%] w-[80%] mt-10 flex flex-col gap-2 ">
+                            <img src="assets/red.png" alt="" class="w-full h-full">
+                            <button id="template4" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20px] uppercase text-white bg-[#154056] p-1.5 rounded-xl font-bold opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
+                                Kitöltés
+                            </button>
+                            <p class="text-[20px] text-[#154056] mb-5 font-bold">Tokió</p>
+                        </div>    
+                    </div>
+
+                    <div class="flex flex-col h-[80%] w-[30%] bg-gradient-to-r from-[#B0FFFF] to-[#DCE1E1] rounded-xl items-center gap-2 shadow-xl relative transition-all duration-300 transform hover:scale-110  hover:opacity-100 group">
+                        <div class="h-[80%] w-[80%] mt-10 flex flex-col gap-2 ">
+                            <img src="assets/gray.png" alt="" class="w-full h-full">
+                            <button id="template5" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20px] uppercase text-white bg-[#154056] p-1.5 rounded-xl font-bold opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
+                                Kitöltés
+                            </button>
+                            <p class="text-[20px]  text-[#154056] mb-5 font-bold">Toronto</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col  h-[80%] w-[30%] bg-gradient-to-r from-[#B0FFFF] to-[#DCE1E1] rounded-xl items-center gap-2 shadow-xl relative transition-all duration-300 transform hover:scale-110 hover:opacity-100 group">
+                        <div class="h-[80%] w-[80%] mt-10 flex flex-col gap-2 ">
+                            <img src="assets/black.png" alt="" class="w-full h-full">
+                            <button id="template6" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[20px] uppercase text-white bg-[#154056] p-1.5 rounded-xl font-bold opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
+                                Kitöltés
+                            </button>
+                            <p class="text-[20px]  text-[#154056] mb-5 font-bold">New York</p>
+                        </div> 
+                    </div>
+                    
                 </div>
-                <div class="flex flex-col items-center gap-5">
-                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Szürke</p>
-                    <img src="assets/gray.png" alt="" class="w-[230px] h-[300px]"> 
-                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()"> Kitöltés</button>
-                </div>
-                <div class="flex flex-col items-center gap-5">
-                    <p class="text-[20px] uppercase text-[#626CCC] font-bold">Fekete</p>
-                    <img src="assets/black.png" alt="" class="w-[230px] h-[300px]"> 
-                    <button class="text-[20px] uppercase text-white bg-[#626CCC] p-1.5 rounded-xl font-bold" onclick="navigate()">Kitöltés</button>
-                </div>
+                
             </div>
             
         </div>
     </div>
     
-    <div >
+    <!-- <div >
         <input type="text" name="" id="textinput" oninput="addText()">
     </div>
-    <p id="text"></p>
+    <p id="text"></p> -->
     
     <script src="index.js"></script>
 </body>

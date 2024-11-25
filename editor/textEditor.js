@@ -25,6 +25,7 @@ function TextEditor() {
         btn.addEventListener('click', () => {
             const cmd = btn.dataset['command'];
             document.execCommand(cmd, false, null);
+            
         });
     }
 
@@ -67,6 +68,7 @@ function TextEditor() {
             }
             profilArray.push(profilDataObject)
             targetDiv = profilDiv;
+            output.innerHTML = "";
 
         } else if (selectedOption === 'second') {
             let jobTitleValue = document.getElementById("jobTitleValue").value
@@ -87,6 +89,8 @@ function TextEditor() {
             document.getElementById("jobTimeEnd").value = ""
 
             targetDiv = experienceDiv;
+            output.innerHTML = "";
+
         } else if (selectedOption === 'third') {
             let shcoolNameValue = document.getElementById("schoolName").value
             let shcoolStartValue = document.getElementById("schoolStart").value
@@ -97,7 +101,6 @@ function TextEditor() {
                 schoolName: shcoolNameValue,
                 schoolStart: shcoolStartValue,
                 schoolEnd: schoolEndValue,
-                schoolText: education,
                 schoolText: schoolText,
             }
             educationArray.push(educationDataObject)
@@ -107,30 +110,9 @@ function TextEditor() {
             document.getElementById("schoolEnd").value = ""
 
             targetDiv = educationDiv;
+            output.innerHTML = "";
         }
 
-        // if (targetDiv && selectedOption === 'first') {
-
-        //     targetDiv.innerHTML = profilArray.map(item =>
-        //         `<div>${item.profilText}</div>`
-        //     ).join('');
-        // }
-        // else if(targetDiv && selectedOption === 'second'){
-        //     targetDiv.innerHTML = experienceTextArray.map(item => `
-        //         <div>
-        //             <p class="text-[#262B33] text-[12px] font-bold">${item.jobTitle}</p>
-        //             <p class='flex gap-2 text-[#ABADB0] text-[10px]'>${item.jobTimeStart} - ${item.jobTimeEnd}</p>
-        //             <p class='text-[12px]'>${item.jobText}</p>
-        //         </div>`)
-        // }
-        // else if(targetDiv && selectedOption === 'third'){
-        //     targetDiv.innerHTML = educationArray.map(item => `
-        //         <div>
-        //             <p class="text-[#262B33] text-[12px] font-bold">${item.schoolName}</p>
-        //             <p class='flex gap-2 text-[#ABADB0] text-[10px]'>${item.schoolStart} - ${item.schoolEnd}</p>
-        //             <p class='text-[12px]'>${item.schoolText}</p>
-        //         </div>`)
-        // }
 
         if (targetDiv) {
             if (profilArray.length > 0) {
@@ -141,7 +123,10 @@ function TextEditor() {
                     </svg>
                     <p class="font-semibold text-[#262B33] text-[18px] font-['Molengo']">Profil</p>
                  </div>`;
-                profilDiv.innerHTML += profilArray.map(item => `<div><p class="text-[#262B33] text-[12px] leading-[18px] ml-5">${item.profilText}</p></div>`).join('');
+                profilDiv.innerHTML += profilArray.map(item => `
+                    <div class="max-w-full whitespace-normal break-words">
+                        <p class="text-[#262B33] text-[12px] leading-[18px] ml-5">${item.profilText}</p>
+                    </div>`).join('');
             } else {
                 profilDiv.innerHTML = ""; 
             }
@@ -158,7 +143,9 @@ function TextEditor() {
                     <div class="text-[#262B33] text-[12px] leading-[18px] ml-5">
                         <p class="text-[#262B33] text-[12px] font-bold">${item.jobTitle}</p>
                         <p class='flex gap-2 text-[#ABADB0] text-[10px]'>${item.jobTimeStart} - ${item.jobTimeEnd}</p>
-                        <p class='text-[12px]'>${item.jobText}</p>
+                        <div class="max-w-full whitespace-normal break-words"> 
+                            <p class='text-[12px]'>${item.jobText}</p>
+                        </div>    
                     </div>
                 `).join('');
             } else {
@@ -177,7 +164,9 @@ function TextEditor() {
                     <div class="text-[#262B33] text-[12px] leading-[18px] ml-5">
                         <p class="text-[#262B33] text-[12px] font-bold">${item.schoolName}</p>
                         <p class='flex gap-2 text-[#ABADB0] text-[10px]'>${item.schoolStart} - ${item.schoolEnd}</p>
-                        <p class='text-[12px]'>${item.schoolText}</p>
+                        <div class=" max-w-full whitespace-normal break-words overflow-auto ">    
+                            <p class='text-[12px]'>${item.schoolText}</p>
+                        </div>    
                     </div>
                 `).join('');
             } else {
@@ -188,9 +177,9 @@ function TextEditor() {
 
     });
 }
-document.addEventListener("DOMContentLoaded", function() {
-    TextEditor();
-});
+document.addEventListener("DOMContentLoaded", TextEditor);
+
+
 
 
 

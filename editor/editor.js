@@ -1,4 +1,70 @@
+const templates = {
+    template1: `
+      <div id="PDFcontainer" class="w-[579px] min-h-[792px] flex justifyCenter items-center">
+        <div id="PDFcontainer" class="bg-white shadow-md px-[40px] py-[20px] w-[579px] min-h-[792px] top-10 ">
+            
+            <div class="flex gap-10 mb-[25px]">
+                <img src="" alt="Image preview"  id="IMG" style="display: none;" class="h-[70px] w-[70px] rounded-md bg-none">
+                <div class="flex flex-col">
+                    <p class="font-bold text-[30px] text-[#262B33] font-['Molengo']" id="fullName"></p>
+                    <p class="text-[#ABADB0] text-[12px]" id="jobTitle"></p>
+                </div>
+            </div>
+    
+            <div class="flex ">
+                <div class="w-[70%] flex flex-col gap-4" id="datadata">
+                    <div id="profil"></div>
+                    <div id="experience"></div>
+                    <div id="education"></div>
+                </div>
+                
+    
+                <div class="w-[30%] flex flex-col gap-4 px-4 jus"> 
+                    <div class="text-[12px]" id="personalInfo">
+                        <p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Adatok</p>
+                        <div class="text-[12px]">
+                            <p id="cityName"></p>
+                            <p id="countryName"></p>
+                            <p id="telephoneNumber"></p>
+                            <p id="emailAddress"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-[12px]" id="experienceDiv"></div>
+                    
+                    <div class="text-[12px] text-[#2196F3]" id="links"></div>
+    
+                    <div class="text-[12px]" id="languagesDIV"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    `,
+    template2: `
+      <p>Template 2</p>
+    `,
+    template3: `
+      <p>Template 3</p>
+    `,
+    template4: `
+        <p>Template 4</p>
+    `,
+    template5: `
+      <p>Template 5</p>
+    `,
+    template6: `
+      <p>Template 6</p>
+    `,
+  };
 
+  const selectedTemplate = localStorage.getItem('selectedTemplate');
+  if (selectedTemplate) {
+    const content = templates[selectedTemplate];
+    document.getElementById('editorArea').innerHTML = content;  // A sablon betöltése a textarea-ba
+  }
+
+  
 
 let linksArray = [];
 let experienceArray = [];
@@ -74,25 +140,31 @@ function addExperience() {
     let experienceName = document.getElementById("experienceName").value;
     let experienceLevel = document.getElementById("experienceLevel").value;
 
-    let experienceObject = {
-        name: experienceName,
-        level: experienceLevel,
-    };
-    experienceArray.push(experienceObject);
+    if(experienceName === "" || experienceLevel === ""){
+        alert("Töltsd ki megfelelően a készségeket.")
+    }else{
+        let experienceObject = {
+            name: experienceName,
+            level: experienceLevel,
+        };
+        experienceArray.push(experienceObject);
+    
+        document.getElementById("experienceName").value = "";
+        document.getElementById("experienceLevel").value = "";
+        renderExperience();
+        renderEditExperience();
+    }
+    
 
-    document.getElementById("experienceName").value = "";
-    document.getElementById("experienceLevel").value = "";
-
-    renderExperience();
-    renderEditExperience();
+    
 }
 function renderEditExperience(){
 
     if (experienceArray.length !== 0) {
         let editExperienceDiv = `
-        <div>
-            <p class="text-[20px] text-gray-700 font-bold py-4">Készségek szerkesztése</p>
-            <div id="editExperienceList"></div>
+        <div class="flex flex-col h-full w-[80%] gap-5">
+            <p class="text-[20px] text-[#656E83] font-bold py-4">Készségek törlése</p>
+            <div id="editExperienceList" class=" max-h-28 w-full overflow-y-auto text-[#828BA2] text-[18px] p-4 bg-[#EFF2F9] rounded-md min-w-[60%]"></div>
         </div>`;
         document.getElementById("editExperience").innerHTML = editExperienceDiv;
 
@@ -101,16 +173,17 @@ function renderEditExperience(){
 
         experienceArray.forEach((experience, index) => {
             let experienceItem = document.createElement('div');
-            experienceItem.className = "experience-item";
-    
-            experienceItem.innerHTML = `${experience.name} ${experience.level}`;
-    
+            experienceItem.innerHTML = `${experience.name}`;
+            experienceItem.classList = "flex justify-between"
+
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "✖";
+            deleteButton.classList = "text-blue-500 text-[18px]  ml-2"
             deleteButton.onclick = () => deleteExperience(index);
     
             experienceItem.appendChild(deleteButton);
             editExperienceList.appendChild(experienceItem);
+            
         });
     }
     else{
@@ -130,10 +203,16 @@ function renderExperience() {
     let experienceHTML = "";
 
     if (experienceArray.length !== 0) {
-        experienceHTML += `<div><p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Készségek</p></div>`;
+        experienceHTML += `<div><p class="font-semibold text-[#262B33] text-[14px] font-['Molengo'] mb-2">Készségek</p></div>`;
 
         experienceArray.forEach((experience) => {
-            experienceHTML += `<div>${experience.name} ${experience.level}</div>`;
+            experienceHTML += `
+            <div class="flex flex-col mb-2">
+                <div class="w-full h-full text-[12px]">${experience.name}</div>
+                <div class="w-full h-[5px] bg-[#CFD6E6]">
+                    <div class="bg-[#191E29] h-[5px] w-${experience.level}/5"></div>
+                </div>
+            </div>`;
         });
     }
     experienceContainer.innerHTML = experienceHTML;
@@ -143,26 +222,29 @@ function addLinks(){
     let linkName = document.getElementById("linkName").value
     let linkURL = document.getElementById("linkURL").value
     
-    let linkObject = {
-        name: linkName,
-        url: linkURL,
-    };
-    linksArray.push(linkObject);
+    if(linkName === "" || linkURL === ""){
+        alert("Töltsd ki megfelelően a linkeket.")
+    }else{
+        let linkObject = {
+            name: linkName,
+            url: linkURL,
+        };
+        linksArray.push(linkObject);
+    
+        document.getElementById("linkName").value = "";
+        document.getElementById("linkURL").value = "";
+    
+        renderLinks()
+        renderEditLinks()
+    }
 
-    // console.log(linksArray)
-
-    document.getElementById("linkName").value = "";
-    document.getElementById("linkURL").value = "";
-
-    renderLinks()
-    renderEditLinks()
 }
 function renderEditLinks(){
     if (linksArray.length !== 0) {
         let editLinksDiv = `
-        <div>
-            <p class="text-[20px] text-gray-700 font-bold py-4">Linkek szerkesztése</p>
-            <div id="editLinksList"></div>
+        <div class="flex flex-col h-full w-[80%] gap-5">
+            <p class="text-[20px] text-[#656E83] font-bold py-4">Linkek törlése</p>
+            <div id="editLinksList" class=" max-h-28 w-full overflow-y-auto text-[#828BA2] text-[18px] p-4 bg-[#EFF2F9] rounded-md min-w-3/5"></div>
         </div>`;
         document.getElementById("editLinks").innerHTML = editLinksDiv;
 
@@ -171,12 +253,12 @@ function renderEditLinks(){
 
         linksArray.forEach((link, index) => {
             let linksItem = document.createElement('div');
-            linksItem.className = "links-item";
-    
-            linksItem.innerHTML = `${link.name} ${link.url}`;
+            linksItem.innerHTML = `${link.name}`;
+            linksItem.classList = "flex justify-between"
     
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "✖";
+            deleteButton.classList = "text-blue-500 text-[18px]  ml-2"
             deleteButton.onclick = () => deleteLinks(index);
 
             linksItem.appendChild(deleteButton);
@@ -198,7 +280,7 @@ function renderLinks() {
     let linksHTML = ""; 
 
     if (linksArray.length !== 0){
-        linksHTML += `<div><p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Linkek</p></div>`;
+        linksHTML += `<div><p class="font-semibold text-[#262B33] text-[14px] font-['Molengo']">Linkek</p></div>`;
 
         linksArray.forEach((link) => {
             linksHTML += `<div><a href="${link.url}" target="_blank">${link.name}</a></div>`; 
@@ -220,26 +302,31 @@ function addLanguage(){
     let languageName = document.getElementById("languageName").value
     let languageLevel = document.getElementById("languages").value
 
-    let languagesObject = {
-        name: languageName,
-        level: languageLevel,
-    };
+    if(languageName === "" || languageLevel === ""){
+        alert("Töltsd ki megfelelően a nyelveket.")
+    }else{
+        let languagesObject = {
+            name: languageName,
+            level: languageLevel,
+        };
+    
+        languagesArray.push(languagesObject);
+    
+        document.getElementById("languageName").value = "";
+        document.getElementById("languages").value = "";
+    
+        renderLanguage();
+        renderEditLanguage();
+    }
 
-    languagesArray.push(languagesObject);
-
-    document.getElementById("languageName").value = "";
-    document.getElementById("languages").value = "";
-
-    renderLanguage();
-    renderEditLanguage();
 }
 
 function renderEditLanguage(){
     if (languagesArray.length !== 0) {
         let editLanguageDiv = `
-        <div>
-            <p class="text-[20px] text-gray-700 font-bold py-4">Nyelvek szerkesztése</p>
-            <div id="editLanguageList"></div> 
+        <div class="flex flex-col h-full w-[80%] gap-5">
+            <p class="text-[20px] text-[#656E83] font-bold py-4">Nyelvek törlése</p>
+            <div id="editLanguageList" class=" max-h-28 w-full overflow-y-auto text-[#828BA2] text-[18px] p-4 bg-[#EFF2F9] rounded-md min-w-3/5"></div>
         </div>`;
         document.getElementById("editLanguage").innerHTML = editLanguageDiv;
 
@@ -248,12 +335,12 @@ function renderEditLanguage(){
 
         languagesArray.forEach((language, index) => {
             let languagesItem = document.createElement('div');
-            languagesItem.className = "languages-item";
-    
             languagesItem.innerHTML = `${language.name} ${language.level}`;
+            languagesItem.classList = "flex justify-between"
     
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "✖";
+            deleteButton.classList = "text-blue-500 text-[18px]  ml-2"
             deleteButton.onclick = () => deleteLanguage(index);
     
             languagesItem.appendChild(deleteButton);
@@ -275,10 +362,16 @@ function renderLanguage(){
     let languagesHTML = "";
 
     if (languagesArray.length !== 0){
-        languagesHTML += `<div><p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Nyelvek</p></div>`
+        languagesHTML += `<div><p class="font-semibold text-[#262B33] text-[14px] font-['Molengo']">Nyelvek</p></div>`
 
         languagesArray.forEach((language)=>{
-            languagesHTML += `<div>${language.name} ${language.level}</div>`
+            languagesHTML += `
+            <div class="flex flex-col mb-2">
+                <div class="w-full h-full text-[12px]">${language.name}</div>
+                <div class="w-full h-[5px] bg-[#CFD6E6]">
+                    <div class="bg-[#191E29] h-[5px] w-${language.level}/4"></div>
+                </div>
+            </div>`;
         })
     }
     languagesContainer.innerHTML = languagesHTML;
@@ -305,5 +398,7 @@ btnGen.addEventListener("click", () => {
         window.open(pdfUrl, '_blank');
     });
 });
+
+
 
 

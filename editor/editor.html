@@ -16,237 +16,193 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <style>
-        *,
-        *:before,
-        *:after {
-            box-sizing: border-box;
-        }
-        
-        .container{
-            width: 50%;
-            display: grid;
-            gap: 0;
-            align-items: center;
-        }
-
-        .tool--btn {
-            display: block;
-            border: none;
-            border-radius: 5px;
-            height: 30px;
-            width: 30px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .tool--btn:hover{
-            background-color: #dddddd;
-        }
-        #output {
-            height: 300px;
-            padding: 1rem;
-            border: 1px solid #333;
-            border-radius: 5px;
-            background-color: white;
-        }
-    </style>
-
-
-    
 </head>
-<body class="font-['Open_Sans'] bg-gray-50" onload="renderCV()" >
+<body class="font-['Open_Sans'] " onload="renderCV()" >
+    
+    
     <div class="w-full h-full flex ">
-        <div class="w-1/2 h-full  overflow-y-auto px-5 py-5">
-            <div class="flex flex-col gap-5">
-                <p class="text-[30px] text-gray-700 font-bold py-4">Személyes adatok</p>
-                <div class="flex flex-col  w-[50%] gap-5">
-                    <div class="flex gap-5 items-center">
-                        <p for="last-name" class="font-medium w-[20%]">Vezetéknév</p>
-                        <input type="text" id="firstNameValue" class="border rounded p-2" oninput="renderCV()" />
+        <div class="w-1/2 h-full bg-white overflow-y-auto px-20 py-10">
+            <div class="flex flex-col gap-5 ">
+                <p class="text-[30px] text-[#656E83] font-bold py-4">Személyes adatok</p>
+                <div class="flex flex-col  w-full gap-5 ">
+                    <div class="flex  w-full h-full">
+                        <div class="flex flex-col gap-2 w-[50%]">
+                            <p for="first-name" class="font-medium w-full text-[#828BA2] text-[18px]">Betölteni Kívánt Munkakör</p>
+                            <input type="text" id="jobValue" class="rounded-md p-4 w-4/5 bg-[#EFF2F9] border-b-4 focus:border-blue-500 focus:outline-none" oninput="renderCV()"/>
+                        </div>
+
+                        <div class="flex gap-2 items-center border-none  w-[50%] p-4 text-[#1A91F0] hover:text-[#1170CD] group"">
+                            <input type="file" id="imageInput" accept="image/*" class="hidden" onchange="renderCV()" />
+                            <label for="imageInput" class="cursor-pointer flex items-center gap-5">
+                                <img src="../assets/fileIMG.png" alt="Upload" class="w-[25%] group-hover:hidden" />
+                                <img src="../assets/hoverFileIMG.png" alt="Upload Hover" class="w-[25%] hidden group-hover:block" />
+                                <p for="first-name" class="font-medium  text-[18px] ">Kép feltöltése</p>
+                            </label>
+                            
+                            <div id="removeIMG"></div>
+                        </div>
+
                     </div>
-                    <div class="flex gap-5 items-center">
-                        <p for="first-name" class="font-medium w-[20%]">Keresztnév</p>
-                        <input type="text" id="lastNameValue" class="border rounded p-2" oninput="renderCV()" />
+
+                    <div class="flex  w-full h-full">
+                        <div  class="flex flex-col gap-2  w-[50%] ">
+                            <p for="first-name"  class="font-medium w-full text-[#828BA2] text-[18px]">Keresztnév</p>
+                            <input type="text" id="lastNameValue" class="rounded-md p-4 w-4/5 bg-[#EFF2F9] border-b-4 focus:border-blue-500 focus:outline-none" oninput="renderCV()" />
+                        </div>
+                        <div class="flex flex-col gap-2  w-[50%]">
+                            <p for="last-name" class="font-medium w-full text-[#828BA2] text-[18px]">Vezetéknév</p>
+                            <input type="text" id="firstNameValue" class="rounded-md p-4 w-4/5 bg-[#EFF2F9] border-b-4 focus:border-blue-500 focus:outline-none"oninput="renderCV()" />
+                        </div>
                     </div>
-                    <div class="flex gap-5 items-center">
-                        <p for="first-name" class="font-medium w-[20%]">Profilkép</p>
-                        <input type="file" id="imageInput" accept="image/*" class="border rounded p-2 bg[]" onchange="renderCV()" />
-                        <div id="removeIMG"></div>
+
+                    
+                    <div class="flex w-full h-full">
+                        <div class="flex flex-col gap-2 w-[50%]">
+                            <p for="first-name" class="font-medium w-full text-[#828BA2] text-[18px]">Ország</p>
+                            <input type="text" id="countryValue" class="rounded-md p-4 w-4/5 bg-[#EFF2F9] border-b-4 focus:border-blue-500 focus:outline-none" oninput="renderCV()" />
+                        </div>
+                        <div class="flex flex-col gap-2 w-[50%]">
+                            <p for="first-name" class="font-medium w-full text-[#828BA2] text-[18px]">Város</p>
+                            <input type="text" id="cityValue" class="rounded-md p-4 w-4/5 bg-[#EFF2F9] border-b-4 focus:border-blue-500 focus:outline-none" oninput="renderCV()" />
+                        </div>
                     </div>
-                    <div class="flex gap-5 items-center">
-                        <p for="first-name" class="font-medium w-[20%]">Ország</p>
-                        <input type="text" id="countryValue" class="border rounded p-2" oninput="renderCV()" />
+                    
+                    <div class="flex w-full h-full">
+                        <div class="flex flex-col gap-2 w-[50%]">
+                            <p for="first-name" class="font-medium w-full text-[#828BA2] text-[18px]">Email</p>
+                            <input type="text" id="emailValue" class="rounded-md p-4 w-4/5 bg-[#EFF2F9] border-b-4 focus:border-blue-500 focus:outline-none" oninput="renderCV()" />
+                        </div>
+                        <div class="flex flex-col gap-2 w-[50%]">
+                            <p for="first-name" class="font-medium w-full text-[#828BA2] text-[18px]">Telefonszám</p>
+                            <input type="text" id="telephoneNumberValue" class="rounded-md p-4 w-4/5 bg-[#EFF2F9] border-b-4 focus:border-blue-500 focus:outline-none"  oninput="renderCV()" />
+                        </div>
                     </div>
-                    <div class="flex gap-5 items-center">
-                        <p for="first-name" class="font-medium w-[20%]">Város</p>
-                        <input type="text" id="cityValue" class="border rounded p-2" oninput="renderCV()" />
-                    </div>
-                    <div class="flex gap-5 items-center">
-                        <p for="first-name" class="font-medium w-[20%]">Email</p>
-                        <input type="text" id="emailValue" class="border rounded p-2" oninput="renderCV()" />
-                    </div>
-                    <div class="flex gap-5 items-center">
-                        <p for="first-name" class="font-medium w-[20%]">Telefonszám</p>
-                        <input type="text" id="telephoneNumberValue" class="border rounded p-2"  oninput="renderCV()" />
-                    </div>
-                    <div class="flex gap-5 items-center">
-                        <p for="first-name" class="font-medium w-[20%]">Munka</p>
-                        <input type="text" id="jobValue" class="border rounded p-2" oninput="renderCV()"/>
-                    </div>
+
+                    
+                    
                 </div>
             </div>
-            <p class="text-[30px] text-gray-700 font-bold py-4 mt-5">Szöveg szerkesztése</p>
+            <p class="text-[30px] text-[#656E83] font-bold py-4 mt-5">Szöveg szerkesztése</p>
             <div class="flex gap-5 mb-5 ">
-                <select name="options" id="options" class="rounded-md p-2">
+                <select name="options" id="options" class="rounded-md p-4 text-[#828BA2]  border-b-4 focus:border-blue-500 focus:outline-none bg-[#EFF2F9] text-[#828BA2]">
                     <option value="first">Profil</option>
                     <option value="second">Szakmai tapasztalat</option>
                     <option value="third">Végzettség</option>
                 </select>
-                <button id="copy-btn" class="rounded-md bg-gray-700 p-2 text-[16px] text-white font-semibold">Szöveg beillesztése</button>
+                <button id="copy-btn" class="w-[30%] rounded-md bg-blue-500 p-2 text-[16px] text-white font-bold">Szöveg beillesztése</button>
             </div>
 
-            <div  id="experienceData">
+            <div  id="experienceData"></div>
+
+            <div id="educationData"></div>
+
+            <div class="w-[90%] grid items-center bg-[#EFF2F9] shadow-xl rounded-md">
+                <ul class="flex flex-nowrap list-none gap-[10px] p-[20px]  rounded-md truncate ">
+                    <li class="tool">
+                        <button type="button" data-command="bold" class="tool--btn block border-none rounded-md cursor-pointer text-[16px] h-[30px] w-[30px] hover:text-blue-500 hover:bg-[#dddddd]">
+                            <i class=' fas fa-bold'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button type="button" data-command="italic" class="tool--btn block border-none rounded-md cursor-pointer text-[16px] h-[30px] w-[30px] hover:text-blue-500 hover:bg-[#dddddd]">
+                            <i class=' fas fa-italic'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button type="button" data-command="underline" class="tool--btn block border-none rounded-md cursor-pointer text-[16px] h-[30px] w-[30px] hover:text-blue-500 hover:bg-[#dddddd]">
+                            <i class=' fas fa-underline'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button type="button" data-command='strikeThrough' class="tool--btn block border-none rounded-md cursor-pointer text-[16px] h-[30px] w-[30px] hover:text-blue-500 hover:bg-[#dddddd]">
+                            <i class=' fas fa-strikethrough'></i>
+                        </button>
+                    </li>
+                </ul>
+                                 
+                <div id="output" contenteditable="true" class="h-full max-w-full whitespace-normal break-words overflow-auto p-4 focus:outline-none"></div>
+            </div>
+            
+            <div class="w-full h-full flex gap-2">
+                <div class="flex flex-col h-full w-1/2 gap-5">
+                    <p class="text-[20px] text-[#656E83] font-bold py-4">Készségek</p>
+                    <div class="flex w-full gap-1 ">
+                        <input type="text" id="experienceName" class="rounded-md p-4 w-4/5 border-b-4 focus:border-blue-500 focus:outline-none bg-[#EFF2F9]"  placeholder="Készség" >
+                        <select name="experienceLevel" id="experienceLevel" class="rounded-md p-4 text-[#828BA2]  border-b-4 focus:border-blue-500 focus:outline-none bg-[#EFF2F9] text-[#828BA2]">
+                            <option value="1">Kezdő</option>
+                            <option value="2">Haladó kezdő</option>
+                            <option value="3">Közép haladó</option>
+                            <option value="4">Haladó</option>
+                            <option value="5">Profi</option>
+                        </select>                       
+                    </div>    
+                    <button class="w-3/5 rounded-md bg-blue-500 p-2 text-[16px] text-white font-bold" onclick="addExperience()">Készség hozzáadása</button>
+                </div>
                 
+                <div id="editExperience" class="flex flex-col h-full w-1/2 items-center"></div>
             </div>
 
-            <div id="educationData">
-
-            </div>
-            <div class="container">
-                <div class="toolbar">
-                    <ul class="flex flex-nowrap list-none gap-[10px] p-[20px] border border-[#333333] rounded-md truncate bg-white">
-                        <li class="tool">
-                            <button type="button" data-command='justifyLeft' class="tool--btn">
-                                <i class=' fas fa-align-left'></i>
-                            </button>
-                        </li>
-                        <li class="tool">
-                            <button type="button" data-command='justifyCenter' class="tool--btn">
-                                <i class=' fas fa-align-center'></i>
-                            </button>
-                        </li>
-                        <li class="tool">
-                            <button type="button" data-command="bold" class="tool--btn">
-                                <i class=' fas fa-bold'></i>
-                            </button>
-                        </li>
-                        <li class="tool">
-                            <button type="button" data-command="italic" class="tool--btn">
-                                <i class=' fas fa-italic'></i>
-                            </button>
-                        </li>
-                        <li class="tool">
-                            <button type="button" data-command="underline" class="tool--btn">
-                                <i class=' fas fa-underline'></i>
-                            </button>
-                        </li>
-                    </ul>
+            <div class="w-full h-full flex gap-2">
+                <div class="flex flex-col h-full w-1/2 gap-5">
+                    <p class="text-[20px] text-[#656E83] font-bold py-4">Linkek</p>
+                    <div class="flex w-full gap-1 ">
+                        <input type="text" id="linkName" class="rounded-md p-4 w-4/5 border-b-4 focus:border-blue-500 focus:outline-none bg-[#EFF2F9]" placeholder="Link">
+                        <input type="text" id="linkURL" class="rounded-md p-4 w-4/5 border-b-4 focus:border-blue-500 focus:outline-none bg-[#EFF2F9]" placeholder="URL">                       
+                    </div>    
+                    <button class="w-3/5 rounded-md bg-blue-500 p-2 text-[16px] text-white font-bold" onclick="addLinks()">Link hozzáadása</button>
                 </div>
+                
+                <div id="editLinks" class="flex flex-col h-full w-1/2 items-center"></div>
+            </div>
 
-                <div id="output" contenteditable="true"></div>
-
+            <div class="w-full h-full flex gap-2">
+                <div class="flex flex-col h-full w-1/2 gap-5">
+                    <p class="text-[20px] text-[#656E83] font-bold py-4">Nyelvek</p>
+                    <div class="flex w-full gap-1 ">
+                        <input type="text" id="languageName" class="rounded-md p-4 w-4/5 border-b-4 focus:border-blue-500 focus:outline-none bg-[#EFF2F9]"  placeholder="Nyelv" >
+                        <select name="languages" id="languages" class="rounded-md p-4 text-[#828BA2]  border-b-4 focus:border-blue-500 focus:outline-none bg-[#EFF2F9] text-[#828BA2]">
+                            <option value="1">Alapfok</option>
+                            <option value="2">Középfok</option>
+                            <option value="3">Felsőfok</option>
+                            <option value="4">Anyanyelvi szint</option>
+                        </select>                       
+                    </div>    
+                    <button class="w-3/5 rounded-md bg-blue-500 p-2 text-[16px] text-white font-bold" onclick="addLanguage()">Nyelv hozzáadása</button>
+                </div>
+                
+                <div id="editLanguage" class="flex flex-col h-full w-1/2 items-center"></div>
             </div>
             
-            <div>
-                <p class="text-[20px] text-gray-700 font-bold py-4">Készségek</p>
-                <div class="flex w-full gap-1">
-                    <input type="text" id="experienceName" class="border border-[#333333] rounded p-2"  placeholder="Készség">
-                    <div class="flex border border-[#333333] rounded p-2 gap-1">
-                        <select name="experienceLevel" id="experienceLevel">
-                            <option value="1/5">Kezdő</option>
-                            <option value="2/5">Haladó kezdő</option>
-                            <option value="3/5">Közép haladó</option>
-                            <option value="4/5">Haladó</option>
-                            <option value="5/5">Profi</option>
-                        </select>
-                    </div>
-                    <button class="rounded-md bg-gray-700 p-2 text-[16px] text-white font-semibold" onclick="addExperience()">Készség hozzáadása</button>
-                </div>    
-                <div id="editExperience"></div>         
-            </div>
-
-            <div>
-                <p class="text-[20px] text-gray-700 font-bold py-4">Linkek</p>
-                <input type="text" id="linkName" class="border border-[#333333] rounded p-2" placeholder="Link">
-                <input type="text" id="linkURL" class="border border-[#333333] rounded p-2" placeholder="URL">
-                <button class="rounded-md bg-gray-700 p-2 text-[16px] text-white font-semibold" onclick="addLinks()">Link hozzáadása</button>
-
-                <div id="editLinks"></div>  
-            </div>
-
-            
-            <div>
-                <p class="text-[20px] text-gray-700 font-bold py-4">Nyelvek</p>
-                <div class="flex w-full gap-1">
-                    <input type="text" id="languageName"  class="border border-[#333333] rounded p-2" placeholder="Nyelv neve">
-                    <div class="flex border border-[#333333] rounded p-2 gap-1">
-                        <select name="languages" id="languages">
-                            <option value="B1">Alapfok</option>
-                            <option value="B2">Középfok</option>
-                            <option value="C1">Felsőfok</option>
-                            <option value="C2">Anyanyelvi szint</option>
-                        </select>
-                    </div>
-                    <button class="rounded-md bg-gray-700 p-2 text-[16px] text-white font-semibold" onclick="addLanguage()">Nyelv hozzáadása</button>
-                </div>
-                <div id="editLanguage"></div>
-            </div>
-
-
         </div> 
 
-
-        <div id="PDFcontainer" class="w-[579px] min-h-[792px] flex justifyCenter items-center">
-            <div id="PDFcontainer" class="bg-white shadow-md px-[40px] py-[20px] w-[579px] min-h-[792px] fixed top-10 ">
+        <div class="w-1/2 h-screen bg-[#656E83] flex flex-col items-center justify-center  left-1/2 transform fixed">
+            <div class="flex gap-20 mb-5 mt-5">
+                <div class="flex gap-2 text-white items-center font-bold  rounded-2xl  px-5 hover:bg-[#586173]">
+                    <img class="h-[30%]" src="../assets/menu.png" alt="">
+                    <button class="">Másik sablont választok</button>
+                </div>
                 
-                <div class="flex gap-10 mb-[25px]">
-                    <img src="" alt="Image preview"  id="IMG" style="display: none;" class="h-[70px] w-[70px] rounded-md bg-none">
-                    <div class="flex flex-col">
-                        <p class="font-bold text-[30px] text-[#262B33] font-['Molengo']" id="fullName"></p>
-                        <p class="text-[#ABADB0] text-[12px]" id="jobTitle"></p>
-                    </div>
-                </div>
-        
-                <div class="flex ">
-                    <div class="w-[70%] flex flex-col gap-4">
-                        <div id="profil"></div>
-                        <div id="experience"></div>
-                        <div id="education"></div>
-                    </div>
-                    
-        
-                    <div class="w-[30%] flex flex-col gap-4 px-4 jus"> 
-                        <div class="text-[12px]" id="personalInfo">
-                            <p class="font-semibold text-[#262B33] text-[12px] font-['Molengo']">Adatok</p>
-                            <div class="text-[12px]">
-                                <p id="cityName"></p>
-                                <p id="countryName"></p>
-                                <p id="telephoneNumber"></p>
-                                <p id="emailAddress"></p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-[12px]" id="experienceDiv"></div>
-                        
-                        <div class="text-[12px] text-[#2196F3]" id="links"></div>
-        
-                        <div class="text-[12px]" id="languagesDIV"></div>
-                    </div>
-                </div>
+                <button class="bg-[#1A91F0] font-bold text-white rounded-xl p-4  hover:bg-[#1170CD]" id="btn">PDF Letöltése</button>
             </div>
+
+            <div id="PDFcontainer" class="w-[579px] min-h-[792px] flex justifyCenter items-center">
             
+                <div id="templateContainer"></div>
+                <div id="editorArea"></div>
+            </div>
         </div>
+        
         
     </div>
     
-    <button class="bg-green-300 rounded-xl p-2 m-5" id="btn">PDF Generálás</button>
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
     <script src="textEditor.js"></script>
-    <script src="editor.js"></script>
+    <script src="editor.js" ></script>
     
 </body>
 </html>
